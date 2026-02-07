@@ -1,0 +1,43 @@
+# FINODE Configuration
+groq:
+  api_key: "${GROQ_API_KEY}"  # Set via environment variable
+  model: "mixtral-8x7b-32768"  # or llama2-70b-4096
+  temperature: 0.3
+  max_tokens: 4096
+  
+rag:
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  chunk_size: 512
+  chunk_overlap: 50
+  top_k: 5
+  faiss_index_path: "./data/faiss_index"
+  
+verification:
+  hallucination_threshold: 0.65  # τ threshold for fact-guard
+  similarity_metric: "cosine"
+  
+privacy:
+  differential_privacy_epsilon: 1.0
+  dp_delta: 0.0001
+  noise_multiplier: 1.0
+  
+audit:
+  log_path: "./logs/audit.jsonl"
+  hash_algorithm: "sha256"
+  
+temporal:
+  ode_solver: "dopri"
+  t_eval_steps: 100
+  
+server:
+  host: "0.0.0.0"
+  port: 8000
+  debug: false
+  
+demo:
+  sample_documents:
+    - "Apple Inc. reported Q3 2024 revenue of $93.7 billion."
+    - "Tesla stock increased 15% following battery innovation announcement."
+    - "Federal Reserve raised interest rates by 0.25% in January 2026."
+    - "S&P 500 index hit all-time high at 6,200 points."
+    - "Bitcoin price reached $95,000 following ETF approval surge."
